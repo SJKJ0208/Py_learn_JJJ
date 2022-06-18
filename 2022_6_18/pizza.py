@@ -5,3 +5,8 @@ def make_pizza(size,*toppings):
     for topping in toppings:
         print("- "+topping)
 
+class Car():
+    def __init__(self,mode):
+        self.mode = mode
+    def display(self):
+        print(self.mode)
