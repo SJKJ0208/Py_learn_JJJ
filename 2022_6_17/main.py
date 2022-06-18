@@ -577,3 +577,215 @@ print("\nhe boy's wife named: "+
 for car in boy['cars']:
     print("\t"+ car)
 
+#6-7
+din = {
+    'first_name' : 'J',
+    'last_name' : 'JJ',
+    'age' : 20,
+    'city' : 'ZC'
+}
+print(din)
+din_peo1 = {
+    'first_name': 'J',
+    'last_name': 'JJ',
+    'age': 20,
+    'city': 'ZC'
+}
+din_peo2 = {
+    'first_name': 'H',
+    'last_name': 'WM',
+    'age': 21,
+    'city': 'ZC'
+}
+din_peo3 = {
+    'first_name': 'H',
+    'last_name': 'JH',
+    'age': 23,
+    'city': 'ZC'
+}
+people = [din_peo1,din_peo2,din_peo3]
+print(people)
+for peo in people:
+    print("\n")
+    for key,value in peo.items():
+        print(str(key)+"   "+str(value))
+
+#learn input and while
+# message = "Tell me something , i will back you"
+# message += "please give me your name "
+# name = input(message)
+# print("your name is :" + name)
+
+#if we want to get a num ,we should transform it
+# message = "please tell me your name"
+# age  = input(message)
+# age = int(age)
+# if age > 18:
+#     print("you are an adult")
+
+# counter = 1
+# while counter < 10000:
+#     counter += 1
+#     print(counter)
+#
+
+# unconfig = ['sss','ffff','aaaa','tttt']
+# config = []
+# while unconfig:
+#     tmp = unconfig.pop()
+#     print(tmp)
+#     config.append(tmp)
+# print(unconfig)
+# print(config)
+#
+# responses = {}
+# flag_active = True
+# while flag_active:
+#     name = input("name")
+#     ans = input("ans")
+#     responses[name] = ans
+#     if input("quit ? ") == 'quit':
+#         flag_active = False
+# print(responses)
+
+#7-8
+sandwich_orders = ['j1','j2','j3']
+finished_sandwiches = []
+while sandwich_orders:
+    sandwich = sandwich_orders.pop()
+    print("i made " + sandwich)
+    finished_sandwiches.append(sandwich)
+print(finished_sandwiches)
+
+
+def greet_user():
+    """现实简单的问候语"""
+    print("Hello")
+greet_user()
+
+def greet_user(username):
+    """def"""
+    print("name is :" + username.title())
+greet_user("jjj")
+
+#position pass key-we try
+def describe_pet(animal_type,pet_name):
+    """display_animal"""
+    print(animal_type)
+    print(pet_name)
+describe_pet(animal_type='pppp',pet_name='kkk')
+
+#we set the variable in def and we can reset it when we call it up
+#we must declare have not set variable at front
+def describe_pet(animal = 'kkk',name = 'hhh'):
+    print(animal)
+    print(name)
+describe_pet(animal='yyy',name='ttt')
+
+#8-3
+def make_shirt(size,font):
+    print(size)
+    print(font)
+make_shirt(12,36)
+
+#back_call variable
+def get_formatted_name(first_name,last_name):
+    """返回整洁的名字"""
+    full_name = first_name + ' '+last_name
+    return full_name.title()
+full_name = get_formatted_name('J','JJ')
+print(full_name)
+
+#we can set a not necessary
+def get_formatted_name(first_name,last_name,mid_name = ''):
+    """返回整洁的名字"""
+    if mid_name:
+        full_name = first_name + ' ' + mid_name + ' ' + last_name
+    else:
+        full_name = first_name + ' ' + last_name
+    return full_name.title()
+full_name = get_formatted_name('J','JJ','焯')
+print(full_name)
+
+def build_person(first_name,last_name):
+    """测试返回字典"""
+    person = {'first_name':first_name,'last_name':last_name}
+    return person
+musician = build_person('J','jj')
+print(musician)
+
+def build_person(first_name,last_name,age = ''):
+    person = {'first_name' : first_name,'last_name':last_name}
+    if age:
+        person['age'] = age
+    return person
+print(build_person('sss','ddd',32))
+
+#send a list to function
+def greet_users(names):
+    """尝试向函数中传入列表"""
+    for name in names:
+        message = name + " Hello"
+        print(message)
+greet_users(['jjj','hwm','kkk'])
+
+
+#modify the list we sent into the function
+before_list = ['lll','jjj','hhh']
+modify_list = []
+def prin_list(send_list):
+    for ele in send_list:
+        print(str(ele))
+def prin_models(before_list,modeify_list):
+    """在函数中修改列表"""
+    while before_list:
+        ele = before_list.pop()
+        print("we finish" + str(ele))
+        modeify_list.append(ele)
+    prin_list(before_list)
+    prin_list(modeify_list)
+prin_models(before_list,modify_list)
+
+#we can send a can't modify list in the function
+#so we should copy the list into the function
+prin_models(before_list[:],modify_list[:])
+#as above we send the copy into the function
+
+#send Transmit variable length parameters
+def known_no_variables(*variables):
+    for variable in variables:
+        print(variable)
+known_no_variables('jjjjjj','pppppp')
+
+def known_no_variables(name,age,*variables):
+    print(name)
+    print(age)
+    for variable in variables:
+        print(variable)
+known_no_variables('jjj',12,'fdas','fdfd')
+
+#send in a pair of key-value
+def build_profile(first,last,**user_info):
+    """创建一个字典，包含我了结的所有事情"""
+    profile = {}
+    profile['first_name'] = first
+    profile['last_name'] = last
+    for key,value in user_info.items():
+        profile[key] = value
+    return profile
+new_users = build_profile('J','JJ',cars = ['car1','car2'],key = 'value')
+print(new_users)
+
+#8-12
+def build_sandwich(*compont):
+    for value in compont:
+        print(value)
+build_sandwich('fdsaf','fdsafegggg','eeee')
+
+#8-13
+#pass
+
+#inpact mode
+
+
+
