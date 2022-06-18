@@ -185,13 +185,114 @@ with open('pi_digits.txt') as file_object:
     #del the line below
 
 #file path
+#pass
+
+#read line by line
+file_name = 'pi_digits.txt'
+with open(file_name) as file_object2:
+    for line in file_object2:
+        print(line.rstrip())
+
+with open(file_name) as file_object3:
+    lines = file_object3.readlines()
+for line in lines:
+    print(line.rstrip())
+
+with open(file_name) as file_object4:
+    lines = file_object4.readlines()
+pi_str = ''
+for line in lines:
+    pi_str += line.strip()
+print(pi_str)
+print(len(pi_str))
+
+#replace
+print(pi_str.replace('3.14','3.66'))
+#temporary
+
+#write txt
+with open(file_name,'a') as file_object:
+    for value in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]:
+        file_object.write(str(value)+"\n")
+
+# 10-3
+# flag_quit = True
+# while flag_quit:
+#     ans = input("please enter your name \n if you want to quit enter 'quit' ")
+#     if ans == 'quit':
+#         break
+#     elif ans == '':
+#         print("please enter an non-empty ans")
+#     else:
+#         with open(file_name,'a') as file_object:
+#             file_object.write(str(ans) + "\n")
+# print("quited")
+#
+
+#10-4
+
+try:
+    print(5/1)
+except ZeroDivisionError:
+    print("you can't divide by zero!")
+else:
+    print("ans")
 
 
+#File not found
+#pass
 
+#analyze txt
+title = "Alice in Wonderland"
+sp = title.split()
+print(sp)
 
+print(sp.count('in'))
+#count
 
+# import json
+# num = [1,3,4,5,6,7]
+# with open(file_name,'w') as file_object:
+#     json.dump(num,file_object)
+#
+# with open(file_name,'r') as file_object:
+#     u = json.load(file_object)
+# print(u)
+#
+# username = input("please enter your name")
+# with open(file_name,'w') as file_object:
+#     json.dump(username,file_object)
 
+#10-11
+# def enter_num():
+#     num = input("please enter a num")
+#     with open(file_name,'w') as file_object:
+#         json.dump(str(num),file_object)
+#
+# def get_num():
+#     try:
+#         with open(file_name) as file_object:
+#              num = json.load(file_object)
+#     except FileNotFoundError:
+#         return input("please enter a num")
+#     else:
+#         return num
+# enter_num()
+# print(get_num())
 
+#test code
+def get_formatted_name(first,last):
+    """生成整洁的名字"""
+    full_name = first + " " + last
+    return full_name.title()
+
+print(get_formatted_name('j','jj'))
+
+#data view
+import matplotlib as plt
+squares = [1,4,9,16,25]
+plt.plot(squares)
+plt.show()
 
 
 
