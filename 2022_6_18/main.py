@@ -4,6 +4,8 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 #learn impact new mode
+import pylab as pl
+
 import pizza
 pizza.make_pizza(16,'ssss','dddd','yyy')
 
@@ -289,10 +291,81 @@ def get_formatted_name(first,last):
 print(get_formatted_name('j','jj'))
 
 #data view
-import matplotlib as plt
-squares = [1,4,9,16,25]
-plt.plot(squares)
+# import matplotlib.pyplot as plt
+# squares = [1,4,9,16,25]
+# plt.plot(squares)
+# plt.show()
+
+# #modify the line style
+# import matplotlib.pyplot as plt
+# #when we no set the pair of num
+# squares = [1,4,9,16,25]
+# input_num = [1,2,3,4,5]
+# plt.plot(input_num,squares,linewidth = 5)
+# plt.title("Hello",fontsize = 15)
+# plt.xlabel("Value",fontsize = 14)
+# plt.ylabel("Square of Value",fontsize = 14)
+# plt.tick_params(axis='both',labelsize = 14)
+# plt.show()
+#
+
+# import matplotlib.pyplot as plt
+# input_num = list(range(1,1000))
+# squares = [value **2 for value in input_num]
+# # for value in input_num:
+# #     squares.append(value**2)
+# #删除数据点的轮廓
+# plt.scatter(input_num,squares,s=1,edgecolors='none',c = squares,cmap = plt.cm.Blues)
+# #设置图表标题并给坐标加上标签
+# plt.title("Square Number",fontsize = 24)
+# plt.xlabel("Value",fontsize = 14)
+# plt.ylabel("Square of Value ",fontsize = 14)
+# plt.axis([0,1100,0,1100000])
+# #裁剪白色区域
+# plt.savefig('svae.png')
+#
+
+import matplotlib.pyplot as plt
+from random import choice
+
+class RandomWalk():
+    """一个生成随机漫步的属性"""
+    def __init__(self,num_points = 5000):
+        """初始化"""
+        self.num_points = num_points
+
+        #漫步始于（0,0）
+        self.x = [0]
+        self.y = [0]
+
+    def fill_walk(self):
+        """计算所有的点"""
+        while len(self.x) < self.num_points:
+            x_direction = choice([1,-1])
+            x_distance = choice([0,1,2,3,4])
+            x_step = x_direction * x_distance
+
+            y_direction = choice([1,-1])
+            y_distance = choice([0,1,2,3,4])
+            y_step = y_direction * y_distance
+
+            #拒绝原地踏步
+            if x_step == 0 and y_step == 0:
+                continue
+
+            #计算下一个点的位置_使用上次最后一个数据进行新的计算
+            next_x = self.x[-1]+x_step
+            next_y = self.y[-1]+y_step
+
+            self.x.append(next_x)
+            self.y.append(next_y)
+
+rw = RandomWalk()
+rw.fill_walk()
+plt.scatter(rw.x,rw.y,s=15,c = rw.x ,cmap=rw.cm.Blues)
 plt.show()
+
+
 
 
 
